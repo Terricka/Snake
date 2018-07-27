@@ -12,7 +12,6 @@
 2. Double click the `index.html` inside of the folder to start the game.
 
 ### Next Steps
-1. Fix console errors
-2. Take input for nicknames and develop a "High Scores Board".
-3. Add in sound effects for apple eating.
-4. Implement socket for collaborative/battle play.
+1. Take input for nicknames and develop a "High Scores Board".
+2. Add in sound effects for apple eating.
+3. Implement socket for collaborative/battle play.

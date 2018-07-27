@@ -50,7 +50,10 @@
     }
 
     function getLength(){
-        board[snakeY][snakeX].snake = snakeLength;
+        if(board[snakeY] && board[snakeY][snakeX] ){
+            board[snakeY][snakeX].snake = snakeLength;
+        }
+        
     }
 
     function getScore(){
@@ -109,19 +112,31 @@
             gameOver();
         }
 
-        // snake self collision
-        if (board[snakeY][snakeX].snake > 0) {
-            score = 0;
-            gameOver();
+        //snake self collision
+        if(board[snakeY] && board[snakeY][snakeX]){
+            if (board[snakeY][snakeX].snake > 0) {
+                score = 0;
+                gameOver();
+            }
+            
         }
+        
+
+
+        // if (board[snakeY][snakeX].snake > 0) {
+        //     startGame();
+        // }
 
         // apple collision
-        if (board[snakeY][snakeX].apple === 1) {
-            snakeLength++;
-            board[snakeY][snakeX].apple = 0;
-            makeApple()
-            getScore();
+        if(board[snakeY] && board[snakeY][snakeX] ){
+            if (board[snakeY][snakeX].apple === 1) {
+                snakeLength++;
+                board[snakeY][snakeX].apple = 0;
+                makeApple()
+                getScore();
+            }
         }
+        
 
         getLength();
 
