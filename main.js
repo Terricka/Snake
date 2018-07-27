@@ -10,7 +10,6 @@
     const body = document.getElementsByTagName("body")[0];
     console.log(body);
     var boardEl;
-    var gameEnded = false;
 
     function makeGame() {
         body.className = "active"
@@ -32,13 +31,15 @@
                 board.push(row);
             }
             startGame();
+            //executing loop
+            loop();
         } else {
             // restarting game
             startGame();
+            loop();
         }
         
-        //executing loop
-        loop();
+        
     } //end make game
 
     function makeApple() {
@@ -87,7 +88,7 @@
         start.innerHTML = "Game Over<br> Try Again"
         start.className = "game-over";
 
-        gameEnded = true;
+
 
     }
 
@@ -109,19 +110,19 @@
         }
 
         // snake self collision
-        if (gameEnded === false && board[snakeY][snakeX].snake > 0) {
+        if (board[snakeY][snakeX].snake > 0) {
             score = 0;
             gameOver();
         }
 
         // apple collision
-        if (gameEnded === false && board[snakeY][snakeX].apple === 1) {
+        if (board[snakeY][snakeX].apple === 1) {
             snakeLength++;
             board[snakeY][snakeX].apple = 0;
             makeApple()
             getScore();
         }
-        
+
         getLength();
 
         // template for snake and apple
