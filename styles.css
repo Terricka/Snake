@@ -1,0 +1,100 @@
+ @import url('https://fonts.googleapis.com/css?family=VT323');
+
+    html {
+        text-align: center;
+        font-family: Helvetica, Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background: url('img/background.png');
+        background-size:auto 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color:#000;
+        margin-top:10vh;
+        font-family: 'VT323', monospace;
+    }
+
+
+    .active #board,
+    .active .score {
+        display: block;
+    }
+
+    .active #start-button,
+    .active #game-over {
+        display:none;
+    }
+
+    h1 {
+        font-size:7em;
+        margin-bottom:0;
+    }
+
+    #board {
+        display: none
+        border: 10px solid #597209;
+    }
+
+    #board div {
+        /*background-color: black;*/
+        border: 1px solid #859b3c;
+        box-sizing: border-box;
+        float: left;
+        width: 24px;
+        height: 24px;
+    }
+
+    #board {
+        border: 10px solid #597209;
+        width: calc(30 * 24px);
+        height:calc(18 * 24px);
+        margin: auto;
+    }
+
+    #board .snake-body {
+        background-color: #718431;
+        border:none;
+    }
+
+    #board .apple {
+        background-color:red;
+    }
+
+    /*.game-over#board .apple,
+    .game-over#board .snake-body,*/
+    .game-over #start-button, 
+    .game-over#board {
+        background-color: #597209;
+    }
+
+    .game-over #board div {
+        border: none;
+    }
+
+    .score {
+        display: none;
+        font-size:2em;
+    }
+
+    #start-button, #game-over {
+        position:absolute;
+        margin:auto;
+        width: 30vw;
+        cursor: pointer;
+        left:35vw;
+        top: 50%;
+        transform: translateY(-50%);       
+        padding:5vh 0vh;
+        font-size:6em;
+        border: 10px solid #597209;
+        color: #363f18;
+    }
+
+
+
+
+    #start-button:hover, #start-button.game-over {
+        background:#597209 !important;
+        color:#849c35 !important;
+    }
