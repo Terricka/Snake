@@ -10,10 +10,11 @@
     const body = document.getElementsByTagName("body")[0];
     console.log(body);
     var boardEl;
+    var gameEnded = false;
 
     function makeGame() {
         body.className = "active"
-        // drawing board
+        // drawing board if this is a new game
         if(!boardEl){
             boardEl = document.getElementById('board');
             for (var y = 0; y < boardH; y++) {
@@ -32,10 +33,11 @@
             }
             startGame();
         } else {
+            // restarting game
             startGame();
         }
         
-        
+        //executing loop
         loop();
     } //end make game
 
@@ -62,6 +64,7 @@
         snakeLength = 5;
         snakeD = 'Up';
 
+        // reset board and snake length
         clearBoard();
         getLength();
     } // end start game
@@ -74,6 +77,7 @@
             }
         }
 
+        // reset snake length and make apple
         getLength();
         makeApple();
     }
@@ -81,7 +85,9 @@
     function gameOver(){
         body.className = "game-over";
         start.innerHTML = "Game Over<br> Try Again"
-        start.className = "game-over"
+        start.className = "game-over";
+
+        gameEnded = true;
 
     }
 
@@ -103,19 +109,19 @@
         }
 
         // snake self collision
-        if (board[snakeY][snakeX].snake > 0) {
+        if (gameEnded === false && board[snakeY][snakeX].snake > 0) {
             score = 0;
             gameOver();
         }
 
         // apple collision
-        if (board[snakeY][snakeX].apple === 1) {
+        if (gameEnded === false && board[snakeY][snakeX].apple === 1) {
             snakeLength++;
             board[snakeY][snakeX].apple = 0;
             makeApple()
             getScore();
         }
-
+        
         getLength();
 
         // template for snake and apple
